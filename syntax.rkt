@@ -17,8 +17,7 @@
                              data)))
 
     (pattern (shimmer low up)
-             #:with fun #'(let ([c (random low up)])
-                            (lambda (num data t i) (values c data))))
+             #:with fun #'(lambda (num data t i) (values (random low up) data)))
 
     (pattern (dim val)
              #:with fun #'(lambda (num data t i) (values val data)))
@@ -92,3 +91,15 @@
                         (render! strip)
                         (loop elems-p (add1 t)))
                       (loop elems 0)))]))
+
+;; (send/mood ("raspberrypi.local" 1234 18 150)
+;;            [(wave 10 0.4 0) (0.8 0.3 0.5) -0.2]
+;;            [(wave 10 0.4 0) (0.5 0.3 0.8) 0.1]
+;;            [(wave 9 0.3 100) (0.1 0.8 0.1) 0.13]
+
+;;            [(wave 100 0.1 0) (0.4 0.4 0.4) 0.2]
+
+;;            [(gauss 10 0.53 100 0) (0.4 0.4 0.4) 1]
+;;            [(gauss 10 0.61 100 20) (0.4 0.4 0.4) 1]
+;;            [(gauss 10 0.54 100 40) (0.4 0.4 0.4) 1]
+;;            [(gauss 10 0.8 100 80) (0.4 0.4 0.4) 1])
